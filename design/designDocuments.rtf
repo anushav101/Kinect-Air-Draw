@@ -1,0 +1,26 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 The primary problem of this program is the drawing feature. To do this I continually tracked the position of the hand, and assign this position to lineEnd. In any instance that the hand was not in a gripped state I would assign lineStart to equal lineEnd. When the hand was gripped I would create a line in which the start was lineStart and the end was lineEnd.\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+The second problem I encountered was that the Kinect gave joint positions in a different format. It gave it in positive and negative fractions where the middle of the screen was 0,0. I had to convert this into (x,y) coordinates that would translate to something I could use in pygame. In order to do this. I had to multiply this value to height/width and then add this value to half the height and width respectively. \
+\
+The third problem I encountered was the way in which to transfer to the customize feature. To do this I used a raised knee. So I did this by checking the position of the knee and detecting whether it was raised above a certain line. If so, I would transfer to the the customize feature.\
+\
+An extremely hard problem I had to solve as the way in which to display the colors, so that users knew exactly how to get the color they wanted. I wanted to make this experience as simple as possible. I wanted the user to move their hand in a circle and the position in the circle would correlate to the color next to it in the color wheel. In order to do this I took top left corner (red corner), top right corner(green corner) and center bottom (blue corner) points of the screen. Then I would take the (x,y) point that the user was on and calculate the distance from each of these points. Then take this distance and divide it by the maximum distance a point could be away from this point and multiplied it by 255. Each of these values would then correspond to the red, green, and blue values.  After this I would determine the distance of the point to the center of the screen, and I would find the distance of the color points from the center of the screen. I would find the which color was the shortest and using that I would subtract a certain value from the other two color portions. This value would be the absolute value of the distance from the corner point minus the center distance divided by the center distance. This resulted in a fairly accurate representation of the color wheel. In order to create a greater range of colors. I allowed the users to press up and down arrows in order to brighten and darken the colors.\
+\
+To adjust the width I simply increased and decreased the lineWidth\
+\
+To change the background. The program would upload images with the name image1.png, image2.png, image3.png, and image4.png. Then it would display these images. A user could click on one of these images and then the function would return this as a parameter to the drawFunction to use as a backgroundImage. \
+\
+The way in which I enabled users to use an image drawn within the app as a background image was that I saved this background image as \'93image4.png\'94. Then the background function would pick it up as one of its images. \
+\
+\
+The user interface is supposed to be easily navigable and minimalistic in design. The first thing they do is pick between the free draw and pictionary. The core features of the draw: drawing and changing the color are able to be navigated through the use of body movements. Further customizability, such as width adjustment and background adjustment require the use of the mouse. Therefore, users are able to draw without going back to the computer very often. Users are able to save their work to work on later, even if they close the application. Pictionary\'92s user interface is also very easy to use. Dictionary will guide you through using it. It gives clear instructions on when to draw and when to guess. Users can skip by using the lasso on the left hand. Core functionality is always enabled through body movements, but users always have the ability to use the keyboard and mouse to also do them. The application gives a lot of choice to users, it becomes what they are most comfortable with. The design of the color wheel came from another Kinect Project. I wanted to implement this because I thought it would be a great way to let users know exactly how to achieve the color they have in mind. Also a previous Kinect Project from 112 who did a similar concept to mine made me not want to organize on my customizability and drawing features on one page. I thought it looked cluttered and would be too hard to deal with. \
+}
